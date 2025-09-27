@@ -6,6 +6,7 @@ body {
 #auth {
     height: 100vh;
     overflow-x: hidden;
+     background: linear-gradient(to right, #001f4d, #20c7f0);
     
     #auth-right {
         height: 100%;
@@ -47,4 +48,113 @@ html[data-bs-theme="dark"] {
     #auth-right {
         background:  url(../../static/images/bg/4853433.png), $page-auth-right-bg;
     }
+}
+
+.login-container {
+  display: flex;
+  max-width: 900px;
+  width: 100%;
+  margin: auto;
+  margin-top: 5%;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+  flex-wrap: wrap; /* allows wrapping on small screens */
+}
+
+.login-left {
+  flex: 1;
+  background: url(../../static/images/banner/login.png) no-repeat center center;
+  background-size: cover;
+  min-height: 300px; /* ensures it stays visible on small screens */
+}
+
+.login-right {
+  flex: 1;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-right h1 {
+  font-weight: 700;
+  color: #1a75ff;
+}
+
+.input-group-text {
+  background: #f5f5f5;
+  border-right: 0;
+}
+
+.btn-custom {
+  background: linear-gradient(to right, #001f4d, #1a75ff);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.75rem;
+  width: 100%;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+  opacity: 0.9;
+}
+
+/* 📱 Responsive Adjustments */
+@media (max-width: 992px) {
+  .login-container {
+    max-width: 95%;
+    margin-top: 2rem;
+  }
+
+  .login-right {
+    padding: 2rem;
+  }
+
+  .login-right h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-left {
+    width: 100%;
+    height: 200px;
+  }
+
+  .login-right {
+    width: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  .btn-custom {
+    padding: 0.65rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-right {
+    padding: 1.5rem 1rem;
+  }
+
+  .login-right h1 {
+    font-size: 1.5rem;
+  }
+
+  .input-group-text {
+    padding: 0.5rem;
+  }
+
+  .form-control {
+    font-size: 0.9rem;
+  }
 }

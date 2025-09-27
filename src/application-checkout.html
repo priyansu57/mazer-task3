@@ -1,9 +1,5 @@
-{% set title = 'Checkout Page' %}
-{% set filename = 'application-checkout.html' %}
 
-{% extends 'src/layouts/master.html' %}
-{% block content %}
-<div class="page-heading">
+
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
@@ -35,5 +31,208 @@
             </div>
         </div>
     </section>
+</div> -->
+{% set title = 'Checkout Page' %}
+{% set filename = 'application-checkout.html' %}
+
+{% extends 'src/layouts/master.html' %}
+
+{% block content %}
+<div class="checkout-container container my-5 animate__animated animate__fadeIn">
+    <!-- Header with Progress Tracker -->
+    <div class="checkout-header rounded-top">
+        <h2 class="mb-1 animate__animated animate__fadeInDown">Checkout</h2>
+        <p class="mb-0 animate__animated animate__fadeInUp">Complete your purchase securely</p>
+
+        <!-- Progress Tracker -->
+        <div class="checkout-steps d-flex justify-content-center mt-3">
+            <div class="step active">Cart</div>
+            <div class="step">Shipping</div>
+            <div class="step">Payment</div>
+            <div class="step">Done</div>
+        </div>
+    </div>
+
+    <div class="row g-0">
+        <!-- Left Form -->
+        <div class="col-lg-7 p-4 animate__animated animate__fadeInLeft">
+            <h4 class="mb-3">Billing Details</h4>
+            <form>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" placeholder="John" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" placeholder="Doe" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" placeholder="john@example.com" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="form-control" placeholder="123 Main Street" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">City</label>
+                        <input type="text" class="form-control" placeholder="New York" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">State</label>
+                        <input type="text" class="form-control" placeholder="NY" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Zip</label>
+                        <input type="text" class="form-control" placeholder="10001" required>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <h4 class="mb-3">Payment</h4>
+                <div class="form-check">
+                    <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                    <label class="form-check-label" for="credit">Credit Card</label>
+                </div>
+                <div class="form-check">
+                    <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+                    <label class="form-check-label" for="debit">Debit Card</label>
+                </div>
+                <div class="form-check mb-3">
+                    <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+                    <label class="form-check-label" for="paypal">PayPal</label>
+                </div>
+
+                <div class="row gy-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Name on card</label>
+                        <input type="text" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Card number</label>
+                        <input type="text" class="form-control" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Expiration</label>
+                        <input type="text" class="form-control" placeholder="MM/YY" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">CVV</label>
+                        <input type="text" class="form-control" placeholder="123" required>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary w-100 mt-4 animate__animated animate__pulse animate__infinite" type="submit">
+                    Place Order
+                </button>
+            </form>
+        </div>
+
+        <!-- Right Order Summary -->
+        <div class="col-lg-5 order-summary animate__animated animate__fadeInRight">
+            <h4 class="mb-3">Order Summary</h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">Product 1</h6>
+                        <small class="text-muted">Brief description</small>
+                    </div>
+                    <span class="text-muted">$50</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">Product 2</h6>
+                        <small class="text-muted">Brief description</small>
+                    </div>
+                    <span class="text-muted">$30</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between bg-light">
+                    <div class="text-primary">
+                        <h6 class="my-0">Promo code</h6>
+                        <small>DISCOUNT10</small>
+                    </div>
+                    <span class="text-primary">−$10</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (USD)</span>
+                    <strong>$70</strong>
+                </li>
+            </ul>
+
+            <form class="card p-2">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Promo code">
+                    <button type="submit" class="btn btn-primary">Redeem</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}
+
+<style>
+/* Layout */
+.checkout-container {
+  max-width: 1100px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+.checkout-header {
+  background: #001f4d; /* Navy Blue */
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+/* Progress Tracker */
+.checkout-steps .step {
+  position: relative;
+  margin: 0 15px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  background: #f1f5ff;
+  color: #001f4d;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.checkout-steps .step.active {
+  background: #1a75ff;
+  color: #fff;
+  transform: scale(1.1);
+}
+.checkout-steps .step:hover {
+  background: #003399;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Order Summary */
+.order-summary {
+  background: #f1f5ff;
+  border-left: 3px solid #001f4d;
+  padding: 1.5rem;
+  border-radius: 0 12px 12px 0;
+}
+
+/* Form */
+.form-control:focus {
+  border-color: #001f4d;
+  box-shadow: 0 0 0 0.2rem rgba(0, 31, 77, 0.25);
+}
+
+/* Button */
+.btn-primary {
+  background: linear-gradient(to right, #001f4d, #1a75ff);
+  border: none;
+}
+.btn-primary:hover {
+  background: #003399;
+}
+</style>
+
+<!-- Animate.css CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>

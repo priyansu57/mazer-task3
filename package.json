@@ -97,5 +97,14 @@
         "dist.zip"
       ]
     }
-  }
+  },
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priyansu57/mazer-task3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/priyansu57/mazer-task3/issues"
+  },
+  "homepage": "https://github.com/priyansu57/mazer-task3#readme"
 }
