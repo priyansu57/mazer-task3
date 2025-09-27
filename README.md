@@ -1,136 +1,354 @@
-<h1 align="center">Mazer Dashboard</h1>
+# 💬 Modern Chat Application UI
 
-![Mazer Screenshot](https://user-images.githubusercontent.com/45036724/167523601-9d20fb17-1989-488f-b619-cb53c0db8898.png)
+This is a **responsive Chat Application UI** built with **Bootstrap 5** and **HTML/Nunjucks**.  
+The design uses **navy-blue & white theme**, **glassmorphism sidebars**, and **modern chat bubbles** with smooth animations.  
+It’s a front-end only project (no backend) – useful for portfolios and demonstrating UI/UX skills. 🚀  
 
-<p align="center">Mazer is an Admin Dashboard Template that can help you develop faster. Made with Bootstrap 5. No jQuery dependency.</p>
-<div align="center">
+---
 
-[![All Contributors](https://img.shields.io/github/contributors/zuramai/mazer)](https://github.com/zuramai/mazer/graphs/contributors)
-![GitHub last commit](https://img.shields.io/github/last-commit/zuramai/mazer.svg)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/zuramai/mazer)
-[![License](https://img.shields.io/github/license/zuramai/mazer.svg)](LICENSE)
+## 📸 Screenshot
 
-</div>
+<img src="./src/assets/static/images/contribute-img/chat-application.png" alt="Project Screenshot" width="500" height="300"/>
 
-<p align="center">
-	<a href="http://zuramai.github.io/mazer/demo">Demo Page</a>&nbsp;&nbsp;&nbsp;
-	<a href="http://zuramai.github.io/mazer/docs">Documentation Page</a>&nbsp;&nbsp;&nbsp;
-	<a href="https://github.com/zuramai/mazer/blob/main/README_INDONESIAN.md">Indonesian README</a>&nbsp;&nbsp;&nbsp;
-</p>
+*(Put your PNG screenshot in the `docs/` folder and rename it `screenshot.png` so GitHub can render it.)*
+
+---
+
+## 🛠 Features
+- 📱 Responsive layout with **three panels**:  
+  - **Sidebar (Contacts List)**  
+  - **Chat Window (Messages)**  
+  - **User Info (Profile & Attachments)**  
+- 🎨 **Modern navy-blue gradient theme**  
+- 🧊 **Glassmorphism side panels** with blur effects  
+- 💬 **Chat bubbles** styled for sender & receiver  
+- 📎 Attachment & file preview support  
+- 🖼 Avatar images with online status indicators  
+- ⚡ Interactive hover & active states  
+
+---
+
+## 📂 Project Structure
+
+project/
+├── src/
+│ ├── layouts/
+│ │ └── master.html # Base layout (Nunjucks)
+│ ├── application-chat.html # Chat UI page
+│ └── assets/ # Static assets (icons, CSS, etc.)
+├── docs/
+│ └── screenshot.png # Screenshot for README
+├── package.json
+├── vite.config.js
+└── README.md
+
+markdown
+Copy code
+
+---
+
+## 🧩 How It Works (Logic)
+
+- The **chat screen** is divided into 3 sections using **Bootstrap grid + Flexbox**.  
+- **Messages** are styled with different background colors and border radius depending on:  
+  - **Sent Message** → Blue gradient bubble, right aligned  
+  - **Received Message** → White/grey bubble, left aligned  
+- **Sidebars** use `backdrop-filter: blur(10px)` to create a **glass effect**.  
+- **Hover effects** highlight the active contact in the sidebar.  
+- **Icons (Bootstrap Icons)** are used for search, emoji, camera, and send buttons.  
+- The **send button** is a floating **circle button with shadow**.  
+
+---
 
 
-## Installation
+# Authentication Pages Refactor
 
-### Using a ready-made built (recommended)
+This document describes the refactor of the **authentication templates** in the project.  
+The changes focus on improving **user experience**, **clarity of purpose**, and **modern design practices**.
 
-Download the latest release from the [releases page](https://github.com/zuramai/mazer/releases "releases page").
-Open the index HTML file and explore the source code.
+---
 
-### Building yourself
+## 🔹 Objective
+The initial template was designed for **Login** only.  
+The new refactor introduces a dedicated **Register Page**, with cleaner structure, extended input fields, and improved UI/UX to support onboarding.
 
-1. Clone the repository 
-```sh
-git clone https://github.com/zuramai/mazer
-```
+---
 
-2. Install dependencies
-```sh
-yarn install
-# OR
-npm install
-```
+## 🔹 Key Changes
 
-3. Run it locally
-```sh
-npm run dev
-```
+### 1. Page Title & Context
+- **Before**: `Login`  
+- **After**: `Register`
 
-4. Open `http://localhost:5173` in your browser
+➡️ Updated to reflect the new user journey: **account creation** instead of **authentication**.
 
-### Building with Docker
+---
 
-- Clone the repository `git clone https://github.com/zuramai/mazer`
-- Make sure you have Docker installed and run:
-    - `docker build -t mazer-frontend .`
-    - `docker run -it -d -p 5173:80 --name mazer mazer-frontend`
-    - Open `http://localhost:5173`
-### Using CDN 
-Simple example using CDN from [jsdelivr.net](https://www.jsdelivr.com/).
+### 2. Layout Simplification
+- **Old (Login)**: Two-column grid (`auth-left` + `auth-right`)  
+- **New (Register)**: Minimal container with `login-left` (illustration) and `login-right` (form)  
 
-```html
-<!DOCTYPE html>
-<html lang="en">
+➡️ Cleaner structure makes the **sign-up form the focal point**.
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Mazer Admin Dashboard</title>
+---
 
-    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/compiled/svg/favicon.svg" type="image/x-icon">
+### 3. Headings & Subtext
+- **Old**:  
+  ```html
+  <h1 class="auth-title">Log in.</h1>
+  <p class="auth-subtitle">Log in with your data that you entered during registration.</p>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/compiled/css/app.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/compiled/css/app-dark.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/compiled/css/iconly.css">
-</head>
+    New:
 
-<body>
-    <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/static/js/initTheme.js"></script>
-    <!-- Start content here -->
+    <h1>Create Account</h1>
+    <p class="text-muted">Fill in your details to register on our platform.</p>
 
-    <!-- End content -->
-    <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/static/js/components/dark.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+➡️ Messaging updated for onboarding clarity.
+4. Form Fields
 
-    <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/compiled/js/app.js"></script>
+    Login Form
 
-    <!-- Need: Apexcharts -->
-    <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/extensions/apexcharts/apexcharts.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/static/js/pages/dashboard.js"></script>
-</body>
+        Username
 
-</html>
-```
+        Password
 
-#### CDN Prefix
+        “Keep me logged in” checkbox
 
-You can use the url with a prefix like this:
-```
-https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo
-```
+    Register Form
 
-A simple example:
-```
-https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/compiled/css/app.css
-```
+        Email
 
-## Community Mazer-based open sources
+        Username
 
-- [CodeIgniter 4](https://github.com/irsyadulibad/mazer-codeigniter) by [@irsyadulibad](https://github.com/irsyadulibad)
-- [Laravel Mazer Starter](https://github.com/billalxcode/laravel-mazer-starter) by [@billalxcode](https://github.com/billalxcode)
-- [Nuxt](https://github.com/fzn0x/mazer-nuxt) by [@fzn0x](https://github.com/fzn0x)
-- [React JS Component Library](https://github.com/fachryansyah/react-mazer-ui) by [@fachryansyah](https://github.com/fachryansyah/)
-- [Adonisjs 5](https://github.com/afman42/mazer-adonisjs) by [@afman42](https://github.com/afman42/)
-- [Django](https://github.com/bimbims125/mazer-django) by [@bimbims125](https://github.com/bimbims125/)
-- [Flask](https://github.com/antheiz/mazer-flask) by [@antheiz](https://github.com/antheiz/)
-- [Symfony 6.3 (Mazer 2.1.0)](https://github.com/TheoD02/mazer-symfony-6.3/tree/mazer-2.1.0) by [@theod02](ttps://github.com/TheoD02)
-- [Spring-Thymeleaf](https://github.com/deyhay-enterprise/spring-project-mazer-template) by [@hi-rullah](https://github.com/hi-rullah)
-- [Ruby on Rails](https://github.com/noesya/mazer-rails) by [@noesya](https://github.com/noesya)
-- [Yii2](https://github.com/anovsiradj/yii2-theme-mazer) by [@anovsiradj](https://github.com/anovsiradj)
-- [Next JS](https://github.com/dipras/next-mazer) by [@dipras](https://github.com/dipras)
-- Did you make in another framework or tools? Open up Pull Requests and put yours here! 😃
+        Password
 
-## Contributing
+        Confirm Password
 
-Please follow [Contributing Guide](./CONTRIBUTING.md) before contributing.
+➡️ Expanded inputs ensure all necessary data for new account creation is collected.
+5. Actions & Links
 
-## License
+    Old: “Don’t have an account? Sign up” + “Forgot password?”
 
-Mazer is under [MIT License](./LICENSE).
+    New: “Already have an account? Log in”
 
-## Author
+➡️ Clearer call-to-action flow between Login ↔ Register.
+6. Visual Enhancements
 
-Mazer is created by <a href="https://saugi.me">Saugi</a>.
+    Larger, centered logo for stronger branding.
 
-## Sponsors
+    btn btn-custom for consistent brand identity.
 
-![zuramai's sponsors](https://raw.githubusercontent.com/zuramai/static/main/sponsors.svg)
+    Cleaner spacing and typography for professional look.
+
+    Left column reserved for illustration/banner (modern web convention).
+
+🔹 Outcome
+
+    Separated Login and Register into distinct, purpose-driven templates.
+
+    Improved UX/UI consistency and readability.
+
+    Made the onboarding process more intuitive and recruiter-ready.
+
+📸 (Optional Screenshots)
+
+   <img src="./src/assets/static/images/contribute-img/login-form.png" alt="Project Screenshot" width="500" height="300"/>
+
+✅ Skills Demonstrated
+
+    Template refactoring (Nunjucks + Bootstrap)
+
+    Responsive design principles
+
+    Semantic HTML and accessibility considerations
+
+    UI/UX improvements for onboarding flows
+
+
+
+# Register Page Refactor
+
+This document highlights the improvements made to the **Register Page** template.  
+The old code is preserved in comments for comparison, while the new implementation introduces a more professional and modern layout.
+
+---
+
+## 🔹 What Changed?
+
+### 1. Layout Structure
+- **Before (Commented Code)**  
+  - Used a **two-column Bootstrap grid** with `auth-left` for form and `auth-right` for an image.  
+  - Banner image was simply placed in the right column.
+
+- **After (Active Code)**  
+  - Split layout into **two balanced halves** (`col-lg-6` each).  
+  - Left side → Form centered both vertically and horizontally.  
+  - Right side → Welcoming text + illustration with better scaling.  
+
+➡️ Improves **responsiveness** and ensures the design feels modern across all screen sizes.
+
+---
+
+### 2. Branding & Logo
+- **Before**:  
+  - Logo was small and aligned to the left.  
+
+- **After**:  
+  - Logo is **centered**, larger, and responsive (`max-width: 120px`).  
+  - Strengthens branding and improves first impression.  
+
+---
+
+### 3. Headings & Subtext
+- **Before**:
+  ```html
+  <h1 class="auth-title">Sign Up</h1>
+  <p class="auth-subtitle mb-5">Input your data to register to our website.</p>
+
+    After:
+
+    <h1 class="auth-title text-center mb-2">Create Account</h1>
+    <p class="auth-subtitle text-center mb-5 text-muted">Fill in your details to register on our platform.</p>
+
+➡️ Clearer, user-friendly messaging with centered alignment for readability.
+4. Form Enhancements
+
+    Same fields kept: Email, Username, Password, Confirm Password.
+
+    UI Improvements:
+
+        Larger input fields (form-control-xl).
+
+        Icon placement optimized with form-control-icon.
+
+        Consistent spacing (mb-4).
+
+➡️ Makes the form cleaner and easier to use.
+5. Call-to-Action
+
+    Before:
+
+        Simple "Already have an account? Log in" text under the form.
+
+    After:
+
+        Cleaner typography (fw-bold text-decoration-none).
+
+        Reduced spacing for a tighter, more professional look.
+
+➡️ Provides a clear navigation path between Register and Login.
+6. Right-Side Banner
+
+    Before:
+
+        Contained only an image.
+
+    After:
+
+        Added a welcome headline and subtext above the image:
+
+        <h2 class="fw-bold">Welcome to Mazer</h2>
+        <p class="lead mt-3">Manage everything faster, smarter, and better with our platform.</p>
+
+        Image scaled with max-height: 80% and object-fit: contain.
+
+➡️ Turns the right column into a marketing space rather than just decoration.
+🔹 Outcome
+
+    Transitioned from a basic Sign Up page to a polished, recruiter-ready Register template.
+
+    Better use of space, typography, and visual hierarchy.
+
+    Balanced form usability with branding and marketing elements.
+
+✅ Skills Demonstrated
+
+    Nunjucks template refactoring
+
+    Bootstrap 5 responsive grid system
+
+    UI/UX improvements for onboarding flows
+
+    Semantic HTML and accessibility practices
+
+📸 After change 
+
+ <img src="./src/assets/static/images/contribute-img/signup-form.png" alt="Project Screenshot" width="500" height="300"/>
+
+
+
+# 🛒 Checkout Page – Refactored with Nunjucks & Bootstrap
+
+This project demonstrates a modern, production-ready Checkout Page built using Nunjucks templating + Bootstrap.
+
+The page has been refactored from a simple “Coming Soon” placeholder into a fully functional, interactive checkout experience with:
+✅ Billing & payment form
+✅ Order summary with discounts & promo codes
+✅ Progress tracker (Cart → Shipping → Payment → Done)
+✅ Modern UI with animations & responsive design
+
+🔄 Refactor Overview
+
+The previous version was only a static placeholder card with a “Coming Soon!” message.
+Now, it’s transformed into a complete checkout experience.
+
+🎨 UI/UX Enhancements
+✅ 1. Progress Tracker
+
+Displays checkout flow steps: Cart → Shipping → Payment → Done
+
+Highlights active step with bold colors and subtle animation.
+
+✅ 2. Billing Form
+
+Collects user details (name, email, address, city, state, zip).
+
+Payment method selection (Credit, Debit, PayPal).
+
+Card details with input validation and placeholders.
+
+✅ 3. Order Summary
+
+Lists products with descriptions & prices.
+
+Shows applied promo code with discount.
+
+Displays grand total clearly.
+
+✅ 4. Styling
+
+Modern card layout with rounded corners & shadows.
+
+Gradient buttons with hover states.
+
+Focus styles on form fields for accessibility.
+
+Responsive design with Bootstrap grid.
+
+✅ 5. Animations (Animate.css)
+
+Smooth entrance effects (fadeIn, fadeInLeft, fadeInRight).
+
+Pulse animation on the Place Order button for call-to-action emphasis.
+
+📂 Tech Stack
+
+Nunjucks (templating engine)
+
+Bootstrap 5 (layout & components)
+
+Animate.css (subtle UI animations)
+
+✨ Final Result
+
+A fully functional, recruiter-ready checkout page.
+
+Demonstrates frontend development + UX design skills.
+
+Can be reused in any e-commerce or SaaS application.
+
+📸 Visual Preview
+<img src="./src/assets/static/images/contribute-img/checkout.png" alt="Project Screenshot" width="500" height="300"/>
+
+👨‍💻 Author
+Built with ❤️ by    PRIYANSU PRIYAJYOTI JENA
